@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/karagenit/pits/issues"
   },
-  "homepage": "https://github.com/karagenit/pits#readme"
+  "homepage": "https://github.com/karagenit/pits#readme",
+  "dependencies": {
+    "handlebars": "^4.0.11"
+  }
 }
