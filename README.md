@@ -8,10 +8,62 @@ Basically, this is just a simple webpage which pulls match data from TBA and dis
 
 Requires a TBA Read key in `tba.token`.
 
-## Backend
-
-There's a ruby gem for the blue alliance API, or we could use something like nodejs.
-
 ## API
 
-We could have a webpage `/events` which queries `/team/frc868/events/2018` which lists each event by name and provides a link to `/event/KEY` based on the key returned by the API. Then, going to `/event/KEY` would query `/team/frc868/events/KEY/matches` and lists all matches (including #, teams, time, and score if it's a previous match).
+Example match data:
+
+```
+[
+  {
+    "key": "string",
+    "comp_level": "qm",
+    "set_number": 0,
+    "match_number": 0,
+    "alliances": {
+      "blue": {
+        "score": 0,
+        "team_keys": [
+          "string"
+        ],
+        "surrogate_team_keys": [
+          "string"
+        ],
+        "dq_team_keys": [
+          "string"
+        ]
+      },
+      "red": {
+        "score": 0,
+        "team_keys": [
+          "string"
+        ],
+        "surrogate_team_keys": [
+          "string"
+        ],
+        "dq_team_keys": [
+          "string"
+        ]
+      }
+    },
+    "winning_alliance": "string",
+    "event_key": "string",
+    "time": 0,
+    "actual_time": 0,
+    "predicted_time": 0,
+    "post_result_time": 0,
+    "score_breakdown": {},
+    "videos": [
+      {
+        "key": "string",
+        "type": "string"
+      }
+    ]
+  }
+]
+```
+
+## TODOs
+
+- List match times as human readable
+- List alliance colors & partners
+- Use nicer tables (e.g. bootstrap)
