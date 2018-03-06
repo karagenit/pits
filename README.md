@@ -4,6 +4,10 @@ FRC Team Information Pit Display
 
 Basically, this is just a simple webpage which pulls match data from TBA and displays it.
 
+## Setup
+
+Requires a TBA Read key in `tba.token`.
+
 ## Backend
 
 There's a ruby gem for the blue alliance API, or we could use something like nodejs.
