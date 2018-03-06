@@ -7,33 +7,25 @@ var handlebars = require('handlebars');
 http.createServer(function (req, res) {
     var token = fs.readFileSync('tba.token', 'utf8').trim();
 
-    //handle url breakdown and set options
-
     var path = url.parse(req.url).pathname;
 
-    if (path === '/events') {
-        var options = {
-            host: 'www.thebluealliance.com',
-            port: 443,
-            path: '/api/v3/team/frc868/events/2018/simple',
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'User-Agent': 'frc868',
-                'X-TBA-Auth-Key': token
-            }
-        };
+    var api_path = "";
+    var template_name = "";
 
-        rest.getJSON(options, function(statusCode, result) {
-            var template = handlebars.compile(fs.readFileSync('events.html', 'utf8'));
-            res.end(template({'events': result}));
-        });
+    if (path === '/events') {
+        api_path = '/api/v3/team/frc868/events/2018/simple';
+        template_name = 'events.html';
     } else if (path.startsWith('/events/')) {
         var eventCode = path.split('/')[2];
+        api_path = '/api/v3/team/frc868/event/2018' + eventCode + '/matches/simple';
+        template_name = 'matches.html';
+    }
+
+    if (api_path) {
         var options = {
             host: 'www.thebluealliance.com',
             port: 443,
-            path: '/api/v3/team/frc868/event/2018' + eventCode + '/matches/simple',
+            path: api_path,
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -43,10 +35,9 @@ http.createServer(function (req, res) {
         };
 
         rest.getJSON(options, function(statusCode, result) {
-            var template = handlebars.compile(fs.readFileSync('matches.html', 'utf8'));
-            res.end(template({'matches': result}));
+            var template = handlebars.compile(fs.readFileSync(template_name, 'utf8'));
+            res.end(template({'data': result}));
         });
-
     } else {
         // TODO: 404?
         res.end("Page Not Found!");
