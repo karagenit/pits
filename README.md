@@ -61,9 +61,3 @@ Example match data:
   }
 ]
 ```
-
-## TODOs
-
-- List match times as human readable
-- List alliance colors & partners
-- Use nicer tables (e.g. bootstrap)

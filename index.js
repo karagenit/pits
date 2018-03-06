@@ -39,9 +39,6 @@ http.createServer(function (req, res) {
             res.end(template({'data': result}));
         });
     } else {
-        // TODO: 404?
         res.end("Page Not Found!");
     }
-
-    // TODO: index page?
 }).listen(8080);
