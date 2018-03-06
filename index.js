@@ -31,6 +31,27 @@ http.createServer(function (req, res) {
             res.end('</body></html>');
         });
     } else if (path.startsWith('/events/')) {
+        var eventCode = path.split('/')[2];
+        var options = {
+            host: 'www.thebluealliance.com',
+            port: 443,
+            path: '/api/v3/team/frc868/event/2018' + eventCode + '/matches/simple',
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'User-Agent': 'frc868',
+                'X-TBA-Auth-Key': token
+            }
+        };
+
+        rest.getJSON(options, function(statusCode, result) {
+            res.end(JSON.stringify(result));
+            //res.write('<html><head></head><body>');
+            //result.forEach(function(e) {
+            //    res.write('<p>' + JSON.stringify(e) + '</p>');
+            //});
+            //res.end('</body></html>');
+        });
 
     } else {
         // TODO: 404?
