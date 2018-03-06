@@ -1,0 +1,19 @@
+{
+  "name": "pit-display",
+  "version": "0.0.0",
+  "description": "FRC Match Information from TBA",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karagenit/pits.git"
+  },
+  "author": "Caleb Smith",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/karagenit/pits/issues"
+  },
+  "homepage": "https://github.com/karagenit/pits#readme"
+}
