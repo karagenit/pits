@@ -43,12 +43,8 @@ http.createServer(function (req, res) {
         };
 
         rest.getJSON(options, function(statusCode, result) {
-            res.end(JSON.stringify(result));
-            //res.write('<html><head></head><body>');
-            //result.forEach(function(e) {
-            //    res.write('<p>' + JSON.stringify(e) + '</p>');
-            //});
-            //res.end('</body></html>');
+            var template = handlebars.compile(fs.readFileSync('matches.html', 'utf8'));
+            res.end(template({'matches': result}));
         });
 
     } else {

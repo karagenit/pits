@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>Matches</h1>
+    <table>
+      <tr>
+        <th>Match Number</th>
+        <th>Match Time</th>
+      </tr>
+    {{#matches}}
+      <tr>
+        <td>{{match_number}}</td>
+        <td>{{predicted_time}}</td>
+      </tr>
+    {{/matches}}
+    </table>
+  </body>
+</html>
