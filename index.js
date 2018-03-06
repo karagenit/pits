@@ -24,7 +24,11 @@ http.createServer(function (req, res) {
         };
 
         rest.getJSON(options, function(statusCode, result) {
-            res.end(JSON.stringify(result));
+            res.write('<html><head></head><body>');
+            result.forEach(function(e) {
+                res.write('<a href="/events/' + e['event_code'] + '">' + e['name'] + '</a><br>');
+            });
+            res.end('</body></html>');
         });
     }
 }).listen(8080);
