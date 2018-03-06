@@ -30,5 +30,12 @@ http.createServer(function (req, res) {
             });
             res.end('</body></html>');
         });
+    } else if (path.startsWith('/events/')) {
+
+    } else {
+        // TODO: 404?
+        res.end("Page Not Found!");
     }
+
+    // TODO: index page?
 }).listen(8080);
