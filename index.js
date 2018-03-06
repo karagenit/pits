@@ -2,6 +2,7 @@ var http = require('http');
 var rest = require('./restapi');
 var url  = require('url');
 var fs   = require('fs');
+var handlebars = require('handlebars');
 
 http.createServer(function (req, res) {
     var token = fs.readFileSync('tba.token', 'utf8').trim();
@@ -24,11 +25,8 @@ http.createServer(function (req, res) {
         };
 
         rest.getJSON(options, function(statusCode, result) {
-            res.write('<html><head></head><body>');
-            result.forEach(function(e) {
-                res.write('<a href="/events/' + e['event_code'] + '">' + e['name'] + '</a><br>');
-            });
-            res.end('</body></html>');
+            var template = handlebars.compile(fs.readFileSync('events.html', 'utf8'));
+            res.end(template({'events': result}));
         });
     } else if (path.startsWith('/events/')) {
         var eventCode = path.split('/')[2];
