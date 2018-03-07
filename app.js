@@ -9,6 +9,14 @@ handlebars.registerHelper("printTime", function(timestamp) {
     return date.toLocaleTimeString('en-US', { hour: '2-digit', minute:'2-digit' });
 });
 
+handlebars.registerHelper("boldUs", function(team) {
+    if (team === "frc868") {
+        return "<b>frc868</b>";
+    } else {
+        return team;
+    }
+});
+
 http.createServer(function (req, res) {
     var token = fs.readFileSync('tba.token', 'utf8').trim();
 

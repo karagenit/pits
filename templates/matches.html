@@ -15,10 +15,10 @@
         <td>{{match_number}}</td>
         <td>{{printTime predicted_time}}</td>
         {{#each alliances.blue.team_keys}}
-          <td style="color:blue;">{{this}}</td>
+          <td style="color:blue;">{{{boldUs this}}}</td>
         {{/each}}
         {{#each alliances.red.team_keys}}
-          <td style="color:red;">{{this}}</td>
+          <td style="color:red;">{{{boldUs this}}}</td>
         {{/each}}
       </tr>
       {{/data}}
