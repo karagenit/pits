@@ -46,10 +46,14 @@ http.createServer(function (req, res) {
         };
 
         rest.getJSON(options, function(statusCode, result) {
-            result.sort(function(a, b) {
-                return a.match_number - b.match_number
-            });
-            res.end(template({'data': result}));
+            if (result && statusCode === 200) {
+                result.sort(function(a, b) {
+                    return a.match_number - b.match_number
+                });
+                res.end(template({'data': result}));
+            } else {
+                res.end(template({}));
+            }
         });
     } else {
         res.end(template({}));
