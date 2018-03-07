@@ -30,7 +30,7 @@ http.createServer(function (req, res) {
         template_name = "404.html";
     }
 
-    var template = handlebars.compile(fs.readFileSync('templates/' + template_name, 'utf8'));
+    var template = handlebars.compile(fs.readFileSync('templates/header.html', 'utf8') + fs.readFileSync('templates/' + template_name, 'utf8'));
 
     if (api_path) {
         var options = {
