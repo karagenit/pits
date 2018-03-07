@@ -17,7 +17,7 @@ http.createServer(function (req, res) {
     var api_path = "";
     var template_name = "";
 
-    if (path === '/events') {
+    if (path === '/events' || path === "/events/") {
         api_path = '/api/v3/team/frc868/events/2018/simple';
         template_name = 'events.html';
     } else if (path.startsWith('/events/')) {
