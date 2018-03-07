@@ -4,6 +4,11 @@ var url  = require('url');
 var fs   = require('fs');
 var handlebars = require('handlebars');
 
+handlebars.registerHelper("printTime", function(timestamp) {
+    var date = new Date(timestamp * 1000);
+    return date.toLocaleTimeString('en-US', { hour: '2-digit', minute:'2-digit' });
+});
+
 http.createServer(function (req, res) {
     var token = fs.readFileSync('tba.token', 'utf8').trim();
 
