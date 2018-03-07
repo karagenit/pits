@@ -6,58 +6,20 @@ Basically, this is just a simple webpage which pulls match data from TBA and dis
 
 ## Setup
 
-Requires a TBA Read key in `tba.token`.
+Requires a [read key for The Blue Alliance API](https://www.thebluealliance.com/apidocs) inside a file named `tba.token` in the root of the project directory.
 
-## API
-
-Example match data:
+Then use `npm` to install the necessary dependencies (handlebars) on your server:
 
 ```
-[
-  {
-    "key": "string",
-    "comp_level": "qm",
-    "set_number": 0,
-    "match_number": 0,
-    "alliances": {
-      "blue": {
-        "score": 0,
-        "team_keys": [
-          "string"
-        ],
-        "surrogate_team_keys": [
-          "string"
-        ],
-        "dq_team_keys": [
-          "string"
-        ]
-      },
-      "red": {
-        "score": 0,
-        "team_keys": [
-          "string"
-        ],
-        "surrogate_team_keys": [
-          "string"
-        ],
-        "dq_team_keys": [
-          "string"
-        ]
-      }
-    },
-    "winning_alliance": "string",
-    "event_key": "string",
-    "time": 0,
-    "actual_time": 0,
-    "predicted_time": 0,
-    "post_result_time": 0,
-    "score_breakdown": {},
-    "videos": [
-      {
-        "key": "string",
-        "type": "string"
-      }
-    ]
-  }
-]
+$ npm install
 ```
+
+## Usage
+
+To launch the server:
+
+```
+$ node app.js
+```
+
+Then navigate to [localhost:8080](http://localhost:8080).
