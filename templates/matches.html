@@ -1,16 +1,20 @@
-  <body class="container">
-    <h1>Matches</h1>
-    <table>
+<body class="container">
+  <h1>Matches</h1>
+  <table class="table table-striped">
+    <thead>
       <tr>
         <th>Match Number</th>
         <th>Match Time</th>
       </tr>
-    {{#data}}
+    </thead>
+    <tbody>
+      {{#data}}
       <tr>
         <td>{{match_number}}</td>
         <td>{{printTime predicted_time}}</td>
       </tr>
-    {{/data}}
-    </table>
-  </body>
+      {{/data}}
+    </tbody>
+  </table>
+</body>
 </html>
