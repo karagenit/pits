@@ -19,7 +19,13 @@ http.createServer(function (req, res) {
         var eventCode = path.split('/')[2];
         api_path = '/api/v3/team/frc868/event/2018' + eventCode + '/matches/simple';
         template_name = 'matches.html';
+    } else if (path === "/") {
+        template_name = "index.html";
+    } else {
+        template_name = "404.html";
     }
+
+    var template = handlebars.compile(fs.readFileSync('templates/' + template_name, 'utf8'));
 
     if (api_path) {
         var options = {
@@ -35,10 +41,9 @@ http.createServer(function (req, res) {
         };
 
         rest.getJSON(options, function(statusCode, result) {
-            var template = handlebars.compile(fs.readFileSync(template_name, 'utf8'));
             res.end(template({'data': result}));
         });
     } else {
-        res.end("Page Not Found!");
+        res.end(template({}));
     }
 }).listen(8080);
